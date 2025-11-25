@@ -1,0 +1,35 @@
+services:
+  # -----------------------------------
+  # Backend Service
+  # Matches: context: . and dockerfile: backend/Dockerfile
+  # -----------------------------------
+  - type: web
+    name: backend
+    env: docker
+    plan: free # Change to 'starter' if you need persistent disk or more RAM
+    rootDir: . # Context is root (.)
+    dockerfilePath: backend/Dockerfile
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        generateValue: true # Generates a secure random key
+      - key: DEBUG
+        value: "0" # Always False in production
+      - key: PORT
+        value: "8000" # Django usually runs on 8000
+
+  # -----------------------------------
+  # Frontend Service
+  # Matches: build: ./frontend
+  # -----------------------------------
+  - type: web
+    name: frontend
+    env: docker
+    plan: free
+    rootDir: frontend # Context is ./frontend
+    dockerfilePath: Dockerfile
+    envVars:
+      - key: REACT_APP_BACKEND_URL
+        fromService:
+          type: web
+          name: backRimg-backend
+          property: url

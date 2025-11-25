@@ -1,35 +1,23 @@
 services:
-  # -----------------------------------
-  # Backend Service
-  # Matches: context: . and dockerfile: backend/Dockerfile
-  # -----------------------------------
+  # ----------------------------------------
+  # 1. The Backend (Django)
+  # ----------------------------------------
   - type: web
-    name: backend
-    env: docker
-    plan: free # Change to 'starter' if you need persistent disk or more RAM
-    rootDir: . # Context is root (.)
-    dockerfilePath: backend/Dockerfile
-    envVars:
-      - key: DJANGO_SECRET_KEY
-        generateValue: true # Generates a secure random key
-      - key: DEBUG
-        value: "0" # Always False in production
-      - key: PORT
-        value: "8000" # Django usually runs on 8000
+    name: django-backend
+    env: python
+    region: singapore # Matches your previous screenshot
+    # Make sure you change 'project_name' below to your actual Django folder name!
+    startCommand: "gunicorn project_name.wsgi:application"
+    buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate"
+    branch: main
 
-  # -----------------------------------
-  # Frontend Service
-  # Matches: build: ./frontend
-  # -----------------------------------
+  # ----------------------------------------
+  # 2. The Frontend (Next.js)
+  # ----------------------------------------
   - type: web
-    name: frontend
-    env: docker
-    plan: free
-    rootDir: frontend # Context is ./frontend
-    dockerfilePath: Dockerfile
-    envVars:
-      - key: REACT_APP_BACKEND_URL
-        fromService:
-          type: web
-          name: backRimg-backend
-          property: host
+    name: nextjs-frontend
+    env: node
+    region: singapore
+    startCommand: "npm start"
+    buildCommand: "npm install && npm run build"
+    branch: main

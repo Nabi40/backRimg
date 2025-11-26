@@ -69,8 +69,10 @@ const steps = [
 
 export default function Instruction() {
   return (
-    <section className="w-full bg-white
-     px-4 py-16 font-[Poppins] sm:px-6 lg:px-8">
+    <section
+      className="w-full bg-blue-100
+     px-4 py-16 font-[Poppins] sm:px-6 lg:px-8"
+    >
       <div className="mx-auto w-full max-w-6xl">
         <h2 className="text-center text-3xl font-black text-[#111] sm:text-4xl">
           How to remove background from photos for FREE?
@@ -82,7 +84,7 @@ export default function Instruction() {
               key={step.id}
               className="relative rounded-[28px] border border-[#f1f1f1] bg-white px-6 pb-10 pt-10 text-center shadow-[0_25px_60px_rgba(0,0,0,0.08)]"
             >
-              <div className="absolute left-0 top-0 flex items-center rounded-tr-[28px] rounded-bl-[28px] bg-[#ff1f5c] px-5 py-2 text-lg font-bold text-white">
+              <div className="absolute left-0 top-0 flex items-center rounded-tr-[28px] rounded-bl-[28px] bg-blue-500 px-5 py-2 text-lg font-bold text-white">
                 {step.id}
               </div>
               <div className="flex flex-col items-center gap-6">
@@ -103,4 +105,3 @@ export default function Instruction() {
     </section>
   );
 }
-

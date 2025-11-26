@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-=n452@d5fn+d)9#!77e5u+*3*eqjsaci4&bdi&d9(fo*xdcfur
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['backrimg.onrender.com']
+ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', 'localhost','backrimg.onrender.com']
 
 
 # Application definition
@@ -135,6 +135,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3001",
+    "http://localhost:3000",
     "http://127.0.0.1:3000",
 ]

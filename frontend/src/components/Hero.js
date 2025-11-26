@@ -98,7 +98,7 @@ export default function Hero() {
       const formData = new FormData();
       formData.append("image", selectedFile);
 
-      const response = await fetch("http://localhost:8001/api/remove-bg/", {
+      const response = await fetch("http://127.0.0.1:8000/api/remove-bg/", {
         method: "POST",
         body: formData,
       });

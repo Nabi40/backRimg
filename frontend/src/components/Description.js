@@ -20,7 +20,7 @@ const content = [
 
 export default function Description() {
   return (
-    <section className="mx-auto w-full  bg-gray-400 px-4 py-16 font-[Poppins] sm:px-6 lg:px-8">
+    <section className="mx-auto w-full  bg-white px-4 py-16 font-[Poppins] sm:px-6 lg:px-8">
       <div className="flex flex-col gap-16">
         {content.map((item, index) => (
           <div

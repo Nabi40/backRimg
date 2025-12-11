@@ -98,7 +98,7 @@ export default function Hero() {
       const formData = new FormData();
       formData.append("image", selectedFile);
 
-      const response = await fetch("http://backend.rubber-duck.solutions//api/remove-bg/", {
+      const response = await fetch("https://backend.rubber-duck.solutions/api/remove-bg/", {
         method: "POST",
         body: formData,
       });

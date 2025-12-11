@@ -26,7 +26,12 @@ SECRET_KEY = "django-insecure-=n452@d5fn+d)9#!77e5u+*3*eqjsaci4&bdi&d9(fo*xdcfur
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', 'localhost','backrimg.onrender.com']
+ALLOWED_HOSTS = ["backend.rubber-duck.solutions", 
+                 "www.rubber-duck.solutions", 
+                 "rubber-duck.solutions",
+                 ".rubber-duck.solutions",
+                 "localhost",
+                 "127.0.0.1"]
 
 
 # Application definition
@@ -135,6 +140,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
+    "http://www.rubber-duck.solutions",
+    "http://rubber-duck.solutions",
+    "https://www.rubber-duck.solutions",
+    "https://rubber-duck.solutions",
 ]

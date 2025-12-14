@@ -11,6 +11,7 @@ services:
       DEBUG: "1"
     volumes:
       - ./backend:/app
+    restart: always
 
   frontend:
     build: ./frontend

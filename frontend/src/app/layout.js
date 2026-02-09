@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { siteData } from "@/components/Seo";
+import GoogleAnalytics from "@/components/GoogleAnalytics"; // or { GoogleAnalytics } depending on export
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,9 +19,7 @@ export const metadata = {
   description: siteData.description,
   keywords: siteData.keywords.join(", "),
   metadataBase: new URL(siteData.url),
-  alternates: {
-    canonical: siteData.url,
-  },
+  alternates: { canonical: siteData.url },
   openGraph: {
     title: siteData.title,
     description: siteData.description,
@@ -38,60 +37,17 @@ export const metadata = {
     site: siteData.url,
     creator: siteData.creator,
   },
-  icons: [
-    {
-      rel: "apple-touch-icon",
-      sizes: "120x120",
-      url: "/favicons/favicon.ico",
-    },
-    {
-      rel: "icon",
-      type: "image/png",
-      sizes: "512x512",
-      url: "/favicons/favicon.ico",
-    },
-    {
-      rel: "icon",
-      type: "image/png",
-      sizes: "192x192",
-      url: "/favicons/favicon.ico",
-    },
-    {
-      rel: "icon",
-      type: "image/png",
-      sizes: "32x32",
-      url: "/favicons/favicon.ico",
-    },
-    {
-      rel: "icon",
-      type: "image/png",
-      sizes: "16x16",
-      url: "/favicons/favicon.ico",
-    },
-  ],
+  icons: [{ rel: "icon", url: "/favicons/favicon.ico" }],
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <GoogleAnalytics gaId="G-PLCYD52C3E" />
         {children}
       </body>
     </html>
   );
 }
+

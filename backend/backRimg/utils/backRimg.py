@@ -8,13 +8,19 @@ import numpy as np
 from skimage import io
 from pathlib import Path
 
-# Load model once
+# Load model lazily to avoid import-time issues
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-model = AutoModelForImageSegmentation.from_pretrained(
-    "briaai/RMBG-1.4",
-    trust_remote_code=True
-)
-model.to(device)
+model = None
+
+def load_model():
+    global model
+    if model is None:
+        model = AutoModelForImageSegmentation.from_pretrained(
+            "briaai/RMBG-1.4",
+            trust_remote_code=True
+        )
+        model.to(device)
+    return model
 
 def preprocess_image(im: np.ndarray, model_input_size: list) -> torch.Tensor:
     if len(im.shape) < 3:
@@ -39,6 +45,9 @@ def remove_bg(input_image_path: str, output_dir: str) -> str:
     Removes background from input image and saves the result to output_dir.
     Returns the output image path.
     """
+    # Load model when first needed
+    bg_model = load_model()
+    
     Path(output_dir).mkdir(parents=True, exist_ok=True)
 
     # Load image and convert to RGB to ensure 3 channels
@@ -48,7 +57,7 @@ def remove_bg(input_image_path: str, output_dir: str) -> str:
     model_input_size = [1024, 1024]
 
     image = preprocess_image(orig_im, model_input_size).to(device)
-    result = model(image)
+    result = bg_model(image)
     result_image = postprocess_image(result[0][0], orig_im_size)
 
     pil_mask_im = Image.fromarray(result_image)

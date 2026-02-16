@@ -27,21 +27,12 @@ SECRET_KEY = "django-insecure-=n452@d5fn+d)9#!77e5u+*3*eqjsaci4&bdi&d9(fo*xdcfur
 DEBUG = True
 
 ALLOWED_HOSTS = ["backend.rubber-duck.solutions", 
-                 "www.rubber-duck.solutions", 
-                 "rubber-duck.solutions",
-                 ".rubber-duck.solutions",
                  "localhost",
                  "127.0.0.1"]
 
-# Security settings for production
-SECURE_SSL_REDIRECT = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_HSTS_SECONDS = 31536000
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
-
 
 # Application definition
 
@@ -153,5 +144,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://rubber-duck.solutions",
     "https://www.rubber-duck.solutions",
     "https://rubber-duck.solutions",
+    "http://localhost:8002",
 ]
 CORS_ALLOW_ALL_ORIGINS = True

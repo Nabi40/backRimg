@@ -4,8 +4,8 @@ pillow
 numpy
 typing
 scikit-image
-huggingface_hub
-transformers>=4.39.1
+huggingface_hub>=0.23.0
+transformers==4.48.0
 djangorestframework==3.15.2
 Django==5.1.6
 requests==2.32.3

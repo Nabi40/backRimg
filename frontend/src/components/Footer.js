@@ -1,180 +1,50 @@
-const columns = [
-  {
-    heading: "AI Removal Tools",
-    links: [
-      "Remove Unwanted Objects",
-      "Remove Background from Video",
-      "Remove Background from Photo",
-      "Face Cutout",
-    ],
-  },
-  {
-    heading: "AI Restore Tools",
-    links: [
-      "Photo Enhancer",
-      "Anime Enhancer",
-      "Video Enhancer",
-      "Photo Colorizer",
-      "Photo Animer",
-      "Photo Color Correction",
-      "Blur Background",
-    ],
-  },
-  {
-    heading: "AI Video Tools",
-    links: [
-      "Video Cutout",
-      "Photo to Video",
-      "Screen Recorder",
-      "Webcam Virtual Background",
-    ],
-  },
-  {
-    heading: "Solution",
-    links: [
-      "Interior Design",
-      "Image Design",
-      "E-commerce",
-      "Developer",
-      "Customized Printing",
-      "ID Photo Maker",
-      "Video XR",
-      "Old Photo Restoration",
-      "Image to Video",
-      "Interior Remodel",
-    ],
-  },
-  {
-    heading: "Support",
-    links: [
-      "Help & FAQs",
-      "Photo Pricing",
-      "Video Pricing",
-      "API Documents",
-      "About Us",
-      "Privacy Policy",
-      "Term of Use",
-      "Sitemap",
-      "Blog",
-    ],
-  },
-  {
-    heading: "App&Plugin",
-    links: ["Cutout Desktop APP", "Mobile APP", "Shopify Plugin"],
-  },
-  {
-    heading: "Visual Models",
-    links: ["Flux Krea", "Imagen 4.0"],
-  },
-  {
-    heading: "Make Money with Us",
-    links: ["Become an Affiliate", "Build APP with API"],
-  },
-  {
-    heading: "Edit Models",
-    links: [
-      "Ai Image Editing Art",
-      "Ai Image Editing Design",
-      "Ai Image Editing Photographer",
-    ],
-  },
-];
-
-const socialIcons = [
-  { label: "LinkedIn", icon: "in" },
-  { label: "Facebook", icon: "f" },
-  { label: "YouTube", icon: "▶" },
-  { label: "Twitter", icon: "🐦" },
-  { label: "Instagram", icon: "📸" },
-];
-
 export default function Footer() {
   return (
-    <footer className="relative mt-16 bg-[#0f0f10] text-white font-[Poppins]">
-      <div className="absolute inset-x-0 -top-8">
-        <svg
-          viewBox="0 0 1440 120"
-          className="h-16 w-full"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0,80 C240,20 480,20 720,80 C960,140 1200,140 1440,80 L1440,0 L0,0 Z"
-            fill="#0f0f10"
-          />
-        </svg>
-      </div>
-
-      <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 pb-16 pt-20 text-[#f8f8f8] sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[2fr_3fr]">
-          <div className="space-y-6">
-            <h3 className="text-2xl font-semibold">About Cutout.Pro</h3>
-            <p className="text-[15px] leading-relaxed text-[#d9d9d9]">
-              Founded in 2018, with a group of technomaniacs, cutout.pro
-              leverages the power of artificial intelligence and computer vision
-              to deliver a wide range of products that make your life much
-              easier and your work more productive.
-            </p>
-            <div className="space-y-4 text-sm text-[#dedede]">
-              <p>
-                Technical support:{" "}
-                <a
-                  href="mailto:tech@cutout.pro"
-                  className="font-semibold text-white underline"
-                >
-                  tech@cutout.pro
-                </a>
-              </p>
-              <p>
-                Business collaboration:{" "}
-                <a
-                  href="mailto:business@picup.ai"
-                  className="font-semibold text-white underline"
-                >
-                  business@picup.ai
-                </a>
-              </p>
-              <div>
-                <p className="uppercase text-xs tracking-wider text-[#bbbbbb]">
-                  HongKong Office:
-                </p>
-                <p className="font-semibold">6/F MANULIFE PLACE,</p>
-                <p className="font-semibold">348 KWUN TONG ROAD, KOWLOON, HK</p>
-              </div>
-            </div>
-
+    <footer className="bg-[#efefef] px-5 pb-5 pt-5 font-[Poppins] md:px-7">
+      <div className="mx-auto w-full max-w-[1240px]">
+        <div className="relative overflow-hidden rounded-[22px] bg-gradient-to-r from-[#c9cfea] to-[#8b95eb] p-7 md:p-9">
+          <div className="grid gap-7 md:grid-cols-[1.05fr_1.15fr] md:items-center">
             <div>
-              <p className="mb-3 font-semibold">Follow us</p>
-              <div className="flex gap-3">
-                {socialIcons.map((item) => (
-                  <button
-                    key={item.label}
-                    aria-label={item.label}
-                    className="flex h-11 w-11 items-center justify-center rounded-md border border-white/20 bg-transparent text-lg font-semibold text-white transition hover:bg-white/10"
-                  >
-                    {item.icon}
-                  </button>
-                ))}
-              </div>
+              <h2 className="text-[40px] font-medium leading-none text-[#20222f]">
+                Instant Background Removal Made Easy
+              </h2>
+              <p className="mt-4 max-w-[630px] text-[20px] leading-7 text-[#3f465f]">
+                Give your photos a completely fresh and professional look by easily adding custom
+                backgrounds of your choice and perfectly resizing them for all official documents,
+                passport photos, stamps, and print-ready formats.
+              </p>
+              <button className="mt-8 rounded-full bg-[#7382ef] px-7 py-2.5 text-base text-white transition hover:bg-[#6575e4]">
+                Upload Image
+              </button>
             </div>
 
-            <p className="text-sm text-[#b3b3b3]">
-              by Team LibAI <span className="mx-1">🌙</span> LibAI Lab
-            </p>
+            <div className="h-[290px] overflow-hidden rounded-t-[16px] rounded-bl-none rounded-br-none border-4 border-[#2d2d30] bg-[#f0f0f0]">
+              <img
+                src="/images/seo.png"
+                alt="Background remover preview"
+                className="h-full w-full object-cover object-top"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-7 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="font-serif text-[44px] leading-none text-[#4f67b5]">Background Remover</p>
+            <p className="mt-4 text-[18px] text-[#555]">&copy; 2025 Algibyte. All rights reserved.</p>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {columns.map((column) => (
-              <div key={column.heading} className="space-y-3">
-                <h4 className="text-lg font-semibold">{column.heading}</h4>
-                <ul className="space-y-1 text-sm text-[#cbcbcb]">
-                  {column.links.map((link) => (
-                    <li key={link} className="transition hover:text-white">
-                      {link}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          <div className="flex flex-col items-start gap-5 md:items-end">
+            <div className="flex items-center gap-4 text-[#7483eb]">
+              <a href="#" aria-label="Facebook" className="text-[22px] font-semibold">f</a>
+              <a href="#" aria-label="Instagram" className="text-[22px] font-semibold">o</a>
+              <a href="#" aria-label="LinkedIn" className="text-[22px] font-semibold">in</a>
+              <a href="#" aria-label="X" className="text-[20px] font-semibold">X</a>
+            </div>
+            <div className="flex items-center gap-6 text-[18px] text-[#555]">
+              <a href="#">Privacy Statement</a>
+              <a href="#">Terms &amp; Condition</a>
+            </div>
           </div>
         </div>
       </div>

@@ -80,9 +80,23 @@ def build_passport_sheet(
     # ✅ Fixed margins (exactly as you asked)
     MARGIN = 50# px (top, bottom, left, right)
 
-    # ✅ Choose gaps (space between photos). You can tune these.
-    gap_x = 50
-    gap_y = 50
+    # Prefer 50px gaps, but clamp to fit the page while keeping 50px margins.
+    preferred_gap_x = 50
+    preferred_gap_y = 50
+
+    available_w = page_w_px - 2 * MARGIN
+    available_h = page_h_px - 2 * MARGIN
+
+    if total_cols * photo_w_px > available_w:
+        raise ValueError("Grid too wide for page with 50 margins. Choose smaller photo/page.")
+    if total_rows * photo_h_px > available_h:
+        raise ValueError("Grid too tall for page with 50 margins. Choose smaller photo/page.")
+
+    max_gap_x = (available_w - total_cols * photo_w_px) // max(total_cols - 1, 1)
+    max_gap_y = (available_h - total_rows * photo_h_px) // max(total_rows - 1, 1)
+
+    gap_x = 0 if total_cols <= 1 else min(preferred_gap_x, max_gap_x)
+    gap_y = 0 if total_rows <= 1 else min(preferred_gap_y, max_gap_y)
 
     # Size the grid
     grid_w = total_cols * photo_w_px + (total_cols - 1) * gap_x

@@ -145,5 +145,6 @@ CORS_ALLOWED_ORIGINS = [
     "https://www.rubber-duck.solutions",
     "https://rubber-duck.solutions",
     "http://localhost:8002",
+    "http://localhost:3001",
 ]
 CORS_ALLOW_ALL_ORIGINS = True

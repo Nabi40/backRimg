@@ -13,5 +13,5 @@ export const siteData = {
     "remove background from logo",
   ],
   image: "/images/seo.png",
-  url: "https://algibyte.onrender.com/",
+  url: "https://www.rubber-duck.solutions/",
 };

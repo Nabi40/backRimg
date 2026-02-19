@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { siteData } from "@/components/Seo";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,7 +18,20 @@ export const metadata = {
   creator: siteData.creator,
   description: siteData.description,
   keywords: siteData.keywords.join(", "),
+  applicationName: "Rubber Duck Solutions",
+  category: "Photo Editing",
   metadataBase: new URL(siteData.url),
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   alternates: {
     canonical: siteData.url,
   },
@@ -26,7 +40,7 @@ export const metadata = {
     description: siteData.description,
     url: siteData.url,
     siteName: siteData.title,
-    images: siteData.image,
+    images: [{ url: siteData.image, width: 1200, height: 630, alt: siteData.title }],
     locale: "en_US",
     type: "website",
   },
@@ -91,6 +105,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <GoogleAnalytics gaId="G-xxxxxxxx" />
       </body>
     </html>
   );

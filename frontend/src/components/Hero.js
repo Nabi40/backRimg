@@ -7,12 +7,101 @@ const PASSPORT_SIZE_OPTIONS = ["4", "8", "12", "16", "20"];
 const STAMP_SIZE_OPTIONS = ["9", "18", "27", "36", "45"];
 const SWATCHES = [
   "transparent",
+  "#ffffff",
+  "#000000",
+  "#f8fafc",
+  "#e2e8f0",
+  "#cbd5e1",
+  "#94a3b8",
+  "#64748b",
+  "#334155",
+  "#ef4444",
+  "#f97316",
+  "#f59e0b",
+  "#eab308",
+  "#84cc16",
+  "#22c55e",
+  "#10b981",
+  "#14b8a6",
+  "#06b6d4",
+  "#0ea5e9",
+  "#3b82f6",
+  "#6366f1",
+  "#8b5cf6",
+  "#a855f7",
+  "#d946ef",
+  "#ec4899",
   "#f34141",
   "#9de12f",
   "#4ed37d",
   "#45b0e4",
   "#5f9de8",
   "#7b87e6",
+  "#fff1f2",
+  "#ffe4e6",
+  "#fecdd3",
+  "#fdf2f8",
+  "#fce7f3",
+  "#fbcfe8",
+  "#fae8ff",
+  "#f3e8ff",
+  "#ede9fe",
+  "#e9d5ff",
+  "#ddd6fe",
+  "#e0e7ff",
+  "#c7d2fe",
+  "#eef2ff",
+  "#eff6ff",
+  "#dbeafe",
+  "#bfdbfe",
+  "#e0f2fe",
+  "#bae6fd",
+  "#cffafe",
+  "#a5f3fc",
+  "#ccfbf1",
+  "#99f6e4",
+  "#d1fae5",
+  "#a7f3d0",
+  "#dcfce7",
+  "#bbf7d0",
+  "#ecfccb",
+  "#d9f99d",
+  "#fef9c3",
+  "#fef08a",
+  "#fef3c7",
+  "#fde68a",
+  "#ffedd5",
+  "#fed7aa",
+  "#fff7ed",
+  "#fffbeb",
+  "#fefce8",
+  "#f1f5f9",
+  "#e5e7eb",
+  "#f0f9ff",
+  "#ecfeff",
+  "#f0fdfa",
+  "#ecfdf5",
+  "#f0fdf4",
+  "#f7fee7",
+  "#fdf4ff",
+  "#faf5ff",
+  "#f5f3ff",
+  "#f9fafb",
+  "#fff5f7",
+  "#fffaf0",
+  "#f5fff7",
+  "#f5fffb",
+  "#f5faff",
+  "#f7f5ff",
+  "#f3f7ff",
+  "#f2fbff",
+  "#f4fff2",
+  "#fffde7",
+  "#fff8e1",
+  "#e8f5e9",
+  "#e3f2fd",
+  "#e1f5fe",
+  "#f3e5f5",
 ];
 
 function checkerboardStyle(size = 16) {
@@ -451,27 +540,26 @@ export default function Hero() {
                 </div>
 
                 {showPalette && (
-                  <div className="rounded-[16px] bg-[#f4f4f4] p-3">
-                    <div className="grid max-h-[320px] grid-cols-3 gap-2 overflow-y-auto pr-1">
+                  <div className="h-[210px] self-start rounded-[16px] bg-[#e6e9f4] p-3">
+                    <div className="flex max-h-[160px] flex-wrap items-center gap-2 overflow-y-auto pr-1">
                       <button
                         onClick={() => setBgColor("transparent")}
-                        className={`h-[92px] rounded-xl border border-[#c8c8c8] ${
-                          bgColor === "transparent" ? "ring-2 ring-[#6875e8]" : ""
+                        className={`h-[18px] w-[18px] rounded-full border border-[#8e97b3] shadow-[0_0_0_1px_rgba(255,255,255,0.75)] ${
+                          bgColor === "transparent" ? "ring-2 ring-[#5f6de2]" : ""
                         }`}
-                        style={checkerboardStyle(14)}
+                        style={checkerboardStyle(6)}
                       >
-                        <span className="text-xs text-[#7a7a7a]">⊘</span>
+                        <span className="sr-only">Transparent</span>
                       </button>
 
                       <button
                         onClick={() => colorInputRef.current?.click()}
-                        className="h-[92px] rounded-xl"
+                        className="h-[18px] w-[18px] rounded-full border border-[#8e97b3] shadow-[0_0_0_1px_rgba(255,255,255,0.75)]"
                         style={{
                           background:
                             "conic-gradient(#ff0000,#ffcc00,#52ff00,#00d5ff,#1d4dff,#d100ff,#ff0000)",
                         }}
                       />
-                      <button className="h-[92px] rounded-xl border border-[#c8c8c8] bg-white" />
                       <input
                         ref={colorInputRef}
                         type="color"
@@ -483,8 +571,8 @@ export default function Hero() {
                         <button
                           key={color}
                           onClick={() => setBgColor(color)}
-                          className={`h-[92px] rounded-xl ${
-                            bgColor === color ? "ring-2 ring-[#6875e8]" : ""
+                          className={`h-[18px] w-[18px] rounded-full border border-[#8e97b3] shadow-[0_0_0_1px_rgba(255,255,255,0.75)] ${
+                            bgColor === color ? "ring-2 ring-[#5f6de2]" : ""
                           }`}
                           style={{ backgroundColor: color }}
                         />
@@ -549,23 +637,30 @@ export default function Hero() {
                   </div>
                 )}
               </div>
+
+              {activeTab !== "Background" && (step === "edit" || step === "sizes") && (
+                <div className="mx-auto mt-4 flex w-full max-w-[920px] justify-end">
+                  {step === "edit" ? (
+                    <button
+                      onClick={() => setStep("sizes")}
+                      className="rounded-full bg-white px-8 py-2 text-sm text-black"
+                    >
+                      Next
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => setStep("edit")}
+                      className="rounded-full border border-[#b6b6b6] bg-white px-8 py-2 text-sm text-[#4b4b4b]"
+                    >
+                      Back
+                    </button>
+                  )}
+                </div>
+              )}
             </>
           )}
         </div>
       </section>
-
-      {hasImage && activeTab !== "Background" && step === "edit" && (
-        <div className="px-4 pb-8 md:px-6">
-          <div className="mx-auto flex w-full max-w-[1240px] justify-center">
-            <button
-              onClick={() => setStep("sizes")}
-              className="rounded-full bg-[#7f8ef0] px-8 py-2 text-sm text-white"
-            >
-              Next
-            </button>
-          </div>
-        </div>
-      )}
 
       {error && <p className="px-6 pb-2 text-center text-xs text-red-600">{error}</p>}
     </>

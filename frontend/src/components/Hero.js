@@ -303,6 +303,7 @@ export default function Hero() {
 
       const apiBase =
         process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_API || "";
+      // Passport/stamp always go through our API proxy so the backend URL is never exposed
       let endpoint = apiBase ? `${apiBase.replace(/\/$/, "")}/process-image` : "/process-image";
       const form = new FormData();
 
@@ -310,9 +311,7 @@ export default function Hero() {
         const selected = Number(sizeOption) || (isStampTab ? 45 : 16);
         const rows = isStampTab ? Math.max(1, Math.ceil(selected / 9)) : Math.max(1, Math.ceil(selected / 4));
 
-        endpoint = apiBase
-          ? `${apiBase.replace(/\/$/, "")}/api/passport-stamp/`
-          : "/api/passport-stamp/";
+        endpoint = "/api/passport-stamp/";
 
         form.append("image", origFile, origFile.name || "your_photo.jpg");
         form.append("bg_color", normalizedBgColor);
@@ -333,12 +332,13 @@ export default function Hero() {
       });
 
       if (!res.ok) {
+        const text = await res.text();
         let message = "Request failed";
         try {
-          const errData = await res.json();
-          message = errData?.error || errData?.detail || JSON.stringify(errData);
+          const errData = JSON.parse(text);
+          message = errData?.error || errData?.detail || message;
         } catch {
-          message = (await res.text()) || message;
+          message = text || message;
         }
         throw new Error(message);
       }
@@ -510,12 +510,11 @@ export default function Hero() {
                   </button>
 
                   <div
-                    className="relative mx-auto w-full max-w-[320px] overflow-hidden"
+                    className="relative mx-auto overflow-hidden"
                     style={{
-                      aspectRatio: "1.7 / 2.1",
-                      // ✅ state3 behavior:
-                      // Background tab = checkerboard always
-                      // other tabs = color behind transparent PNG
+                      width: "454px",
+                      height: "419.29px",
+                      // Background tab = checkerboard always; other tabs = color behind transparent PNG
                       ...(activeTab === "Background"
                         ? checkerboardStyle(20)
                         : { backgroundColor: bgColor === "transparent" ? "#ffffff" : bgColor }),
@@ -582,7 +581,7 @@ export default function Hero() {
                 )}
 
                 {showSizes && (
-                  <div className="rounded-[16px] bg-[#f4f4f4] p-3">
+                  <div className="relative overflow-hidden rounded-[16px] bg-[#f4f4f4] p-3">
                     <div className="mb-2 flex items-center gap-2">
                       {sizeOptions.map((size) => (
                         <button
@@ -600,7 +599,7 @@ export default function Hero() {
                     </div>
 
                     <div className="rounded-md border border-[#d2d2d2] bg-[#ececec] p-2">
-                      <div className="mx-auto aspect-[210/297] w-full max-w-[340px] bg-white p-3 shadow-[0_6px_20px_rgba(0,0,0,0.12)]">
+                      <div className="mx-auto aspect-[210/297] w-full max-w-[320px] bg-white p-3 shadow-[0_6px_20px_rgba(0,0,0,0.12)]">
                         <div
                           className="grid h-full gap-2"
                           style={{ gridTemplateColumns: `repeat(${pageCols}, minmax(0, 1fr))` }}

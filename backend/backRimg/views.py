@@ -1,17 +1,14 @@
 # backRimg/views.py
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .utils.backRimg import remove_bg
+from .utils.pipeline import remove_bg
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
 from pathlib import Path
 from django.conf import settings
 import os
-from .utils.passport_stamp import add_bg_color, build_passport_sheet
-from .serializers import PassportStampSerializer  # ✅ add this
-
-
 
 class RemoveBGAPIView(APIView):
 
@@ -63,9 +60,6 @@ class RemoveBGAPIView(APIView):
 
         # Else multiple
         return Response({"urls": output_urls}, status=status.HTTP_200_OK)
-
-
-
 
 
 class PassportStampProcessAPIView(APIView):

@@ -26,3 +26,11 @@ staticfiles/
 node_modules/
 .next/
 EOF
+
+
+backend/web_env/
+**/web_env/
+venv/
+.venv/
+__pycache__/
+*.pyc
